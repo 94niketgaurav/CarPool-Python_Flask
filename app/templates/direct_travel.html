@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 style="text-align: center";>Welcome Traveller</h1>
+<br>
+<form action="{{ url_for('traveller.dtravel') }}" method='POST'>
+    {{form.hidden_tag()}}
+
+    <fieldset>
+        <p>
+            {{ form.name.label }}<br>
+            {{form.name }}<br>
+        </p>
+        <p>
+            {{ form.email.label }}<br>
+            {{ form.email }}<br>
+        </p>
+        <p>
+            {{ form.phone.label }}<br>
+            {{ form.phone  }}
+        </p>
+        <p>
+            {{ form.start_location.label }}<br>
+            {{ form.start_location }}<br>
+        </p>
+        <p>
+            {{ form.start_time.label }}<br>
+            {{ form.start_time }}<br>
+
+        </p>
+        <p>
+            {{ form.drop_location.label }}<br>
+            {{ form.drop_location }}<br>
+        </p>
+
+        <input type="submit" value="Submit">
+    </fieldset>
+</form>
+
+{% endblock %}

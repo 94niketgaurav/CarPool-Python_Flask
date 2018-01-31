@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content %}
+
+<body>
+<fieldset>
+    {% for value in p %}
+        <tr>
+            <td>{{  value.name }}</td>
+            <td>{{  value.email }}</td>
+        </tr>
+    {% endfor %}
+    {% for value in r %}
+    <tr>
+        <td>{{ value.start_location }}</td>
+        <td>{{ value.start_time }} </td>
+        <td>{{ value.car_model }}</td>
+        <td>{{ value.car_number }}</td>
+        <td>{{ value.type }}</td>
+    </tr>
+    {% endfor %}
+</fieldset>
+
+</body>
+
+{% endblock %}

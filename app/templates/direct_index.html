@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 style="text-align: center" ;/>Welcome Traveller</h1>
+<h1 style="text-align: center" ;/>For Direct Travel</h1>
+
+<fieldset align="centre">
+    <body>
+
+
+    <form action="{{ url_for('traveller.rides') }}" method='POST' >
+        <table align="left|right|center" border="1">
+            {% for rides in r %}
+            <tr>
+                <td> {{ rides.start_location }}</td>
+                <td>{{ rides.start_time }}</td>
+                <td> {{ rides.drop_location }}</td>
+                <td>{{ rides.car_model }}</td>
+                <td>{{ rides.car_number }}</td>
+                <td>{{ rides.seats }}</td>
+                <td>{{ rides.type }}</td>
+                <td><input type="checkbox" name="selected_rides" id="{{ rides.id  }}" value="{{ rides.id }}" ></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+
+    <!--<form action="http://localhost:5000/traveller/DirectTravel/rides">-->
+    <!--<input type="checkbox" values="myfunction()">-->
+
+    </body>
+</fieldset>
+
+{% endblock %}

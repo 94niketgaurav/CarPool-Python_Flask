@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 style = "text-align: center"; />Welcome User</h1>
+<br>
+<fieldset>
+
+    <form action="{{ url_for('owner.signup') }}" method="post" >
+        {{form.hidden_tag()}}<br><br>
+
+    <label><b>{{ form.name.label }}</b></label>
+         {{ form.name }}<br><br>
+
+    <label><b>{{form.email.label }}</b></label>
+        {{ form.email }}<br><br>
+
+    <label><b>Password</b></label>
+        {{ form.password }}<br>
+
+        <input type="submit" value="Sign Up">
+
+    </form>
+</fieldset>
+{% endblock %}

@@ -1,0 +1,26 @@
+<!--<!doctype html>-->
+
+{% extends "base.html" %}
+{% block content %}
+
+<h1 style="text-align: center" ;/>Welcome Owner</h1><br><br>
+
+<fieldset>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+
+    <form action="{{ url_for('owner.login') }}" method="GET">
+        <input style="text-align: center; width: 300px; padding: 20px;  font-weight: bold;  border-radius: 10px; border: 1px solid #999; font-size: 150%;"
+               type="submit" value="Sign In"/>
+    </form>
+    &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+
+    <form action="{{ url_for('owner.signup') }}" method="GET">
+        <input style="text-align : center; width : 300px; padding : 20px;  font-weight : bold;  border-radius : 10px; border : 1px solid #999; font-size : 150%;"
+               type="submit" value="Sign Up"/>
+    </form>
+
+</fieldset>
+
+{% endblock %}
+
+

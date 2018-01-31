@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h1 style="text-align: center" >Welcome Traveller</h1>
+<br>
+<fieldset>
+
+    <form action="http://localhost:5000/traveller/signup" method="POST">
+        {{form.hidden_tag()}}<br><br>
+
+        <label><b>{{ form.name.label }}</b></label>
+        {{ form.name }}<br><br>
+
+        <label><b>{{ form.email.label }}</b></label>
+        {{ form.email }}<br><br>
+
+        <label><b>{{ form.password.label }}</b></label>
+        {{ form.password }}<br><br>
+
+        <label><b>{{form.sl.label }}</b></label>
+        {{ form.sl }}<br><br>
+
+        <label><b>{{form.st.label }} </b></label>
+        {{ form.st }}<br><br>
+
+        <label><b>{{form.dl.label }}</b></label>
+        {{ form.dl }}<br><br>
+
+        <input type="submit" value="Sign Up">
+
+    </form>
+</fieldset>
+{% endblock %}

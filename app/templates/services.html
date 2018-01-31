@@ -1,0 +1,40 @@
+
+{% extends "base.html" %}
+{% block content %}
+
+<h1 style = "text-align: center"; />Welcome {{ variable}}</h1>
+
+    <fieldset>
+
+    <form action = "{{ url_for('owner.owner_service') }}" method="POST">
+        {{form.hidden_tag()}}<br><br>
+
+        <label><b>{{ form.phone_number.label }}</b></label>
+            {{ form.phone_number }}<br><br>
+
+        <label><b>{{ form.start_location.label }}</b></label>
+            {{ form.start_location }}<br><br>
+
+        <label><b>{{form.start_time.label }}</b></label>
+            {{ form.start_time }}<br><br>
+
+        <label><b>{{ form.drop_location.label }}</b></label>
+            {{ form.drop_location }}<br><br>
+
+        <label><b>{{ form.car_model.label }}</b></label>
+            {{ form.car_model }}<br><br>
+
+         <label><b>{{ form.car_number.label }}</b></label>
+            {{ form.car_number }}<br><br>
+
+        <label><b>{{ form.seats.label }}</b></label>
+            {{ form.seats }}<br><br>
+
+        <label><b>{{ form.type.label }}</b></label>
+            {{ form.type}}<br><br>
+
+        <p><input type="submit" value="ENTER"/> </p>
+        </form>
+    </fieldset>
+
+{% endblock %}
