@@ -8,15 +8,15 @@ param:Parameters
 Datastore:json data to be sent
 
 """
-def sendNotification(driver):
+def sendNotification(owner_mail,traveller_name):
     param = []
-    print(driver)
+    print(owner_mail)
 
-    for rides in driver:
+    for rides in owner_mail:
         user = Users.query.filter(Users.id == rides)
         for value in user:
             param.append(value.email)
-
+    body= "http://127.0.0.1:5000/booking/final_booking/"+str(traveller_name)+"\n You Have A Rider"
     datastore = {
         "data": {
             "subject": "CarPool-App",
@@ -28,7 +28,7 @@ def sendNotification(driver):
             },
             "consumer": "prowl",
             "attachments": [],
-            "body_text": "http://127.0.0.1:5000/booking/ \n  You Have A Rider"
+            "body_text": body
         }
     }
     Json_data = json.dumps(datastore)
@@ -55,8 +55,8 @@ def sendverified(traveller_email):
         print(values.phone)
         body['phone'] = values.phone
 
-    message = "Thanks Owner for Your Concern\n " + " " + "Rider Details:" + str(body['name']) + " " + str(
-        body['email']) + " " + str(body['phone'])
+    message = "Thanks Owner for Your Concern\n " + " " + "Rider Details:\n" + str(body['name']) + "\n  " + str(
+        body['email']) + "\n  " + str(body['phone'])
     print(message)
 
     datastore = {
@@ -76,7 +76,7 @@ def sendverified(traveller_email):
     Json_data = json.dumps(datastore)
     headers = {'content-type': 'application/json'}
     r = requests.post(url=URL, data=Json_data, headers=headers)
-    print(r.jason())
+    print(r.json())
     return
 
 
@@ -89,19 +89,19 @@ def sendRider(ridr_email):
 
     body['name'] = user.name
     body['email'] = user.email
-    body['Phone Number'] = user.phone
     id = user.id
 
     service = services.query.filter_by(id=id).first()
+    body['Phone Number'] = service.phone_number
     body['Car model'] = service.car_model
     body['Car Number'] = service.car_number
     body['seats'] = service.seats
     body['type'] = service.type
 
-    message = "Your Ride has been Confirmed\n " + " " + "Owner  Details:" + str(body['name']) + " " + str(
-        body['email']) + " " + str(body['Phone Number']) + " " + str(body['Car model']) + " " + str(
+    message = "Your Ride has been Confirmed\n " + " " + "Owner  Details:\n " + str(body['name']) + "\n  " + str(
+        body['email']) + "\n  " + str(body['Phone Number']) + "\n  " + str(body['Car model']) + "\n  " + str(
         body['Car Number']) + " " + str(
-        body['seats']) + " " + str(body['type'])
+        body['seats']) + "\n  " + str(body['type'])
 
     param = []
     traveller = traveller_direct.query.all()

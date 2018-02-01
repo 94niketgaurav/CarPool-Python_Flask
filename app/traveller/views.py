@@ -6,7 +6,7 @@ from app.RepositoryService.travellerDto import travellerDto
 from app.RepositoryService.travellerRepository import travellerRespository
 
 traveller = Blueprint('traveller', __name__, url_prefix='/traveller')
-
+traveller_name = ""
 
 @traveller.route('/')
 def travel():
@@ -45,9 +45,10 @@ def dtravel():
     elif request.method == 'POST':
         print("In Post call")
         traveller_dto = travellerDto(form.name.data, form.email.data, form.phone.data,form.start_time.data)
+        global traveller_name
+        traveller_name = form.name.data
 
         traveller_repo.create_user(traveller_dto)
-
         if form.validate_on_submit() is True:
             print("IN form")
             rides = services.query.filter_by(start_location=form.start_location.data,
@@ -61,7 +62,8 @@ def rides():
         drivers = request.form.getlist("selected_rides")
         driver = [x.encode('UTF8') for x in drivers]
         print(driver)
-        sendNotification(driver)
+        print(traveller_name)
+        sendNotification(driver, traveller_name)
         return redirect(url_for('home.home'))
         """How to Wait For Owner to Reply Back Then show Rider Details of Owner"""
 

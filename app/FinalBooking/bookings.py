@@ -5,10 +5,11 @@ from app.Notifications.NotifyFunctions import sendverified, sendRider
 final_book = Blueprint('booking', __name__, url_prefix='/booking')
 
 
-@final_book.route('/', methods=['GET', 'POST'])
-def final_booking():
+@final_book.route('/final_booking/<variable>', methods=['GET', 'POST'])
+def final_booking(variable):
     form = BookingForm(request.form)
     print("in Booking")
+    print(variable)
     count = 0
 
     if request.method == 'GET':
