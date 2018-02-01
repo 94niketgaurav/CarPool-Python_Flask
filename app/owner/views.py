@@ -28,6 +28,10 @@ def ownerhome():
 
 @own.route('/signup', methods=['GET', 'POST'])
 def signup():
+    """
+    For Signup of new users
+    :return:
+    """
     auth_service = AuthService()
     form = signupForm(request.form)
     print("in signup")
@@ -51,6 +55,10 @@ def signup():
 
 @own.route('/services', methods=['GET', 'POST'])
 def owner_service():
+    """
+    For Car Details with Owner Further Details
+    :return:
+    """
     database_repo = databaseRespository()
     form = service(request.form)
 
@@ -80,6 +88,9 @@ def load_user(id):
 def login():
     auth_service = AuthService()
     form = Login(request.form)
+    """
+    Login Function
+    """
 
     if request.method == 'GET':
         print("In Get Method")

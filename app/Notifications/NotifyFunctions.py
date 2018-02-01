@@ -7,6 +7,11 @@ URL = "http://api.treebohotels.com/v1/notification/email/"
 param:Parameters
 Datastore:json data to be sent
 
+Consists of Notification services 
+1.Traveller Details
+2.Owner Details
+3.Confirmation To Both
+
 """
 def sendNotification(owner_mail,traveller_name):
     param = []

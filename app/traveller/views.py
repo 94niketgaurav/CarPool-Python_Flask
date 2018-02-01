@@ -8,6 +8,7 @@ from app.RepositoryService.travellerRepository import travellerRespository
 traveller = Blueprint('traveller', __name__, url_prefix='/traveller')
 traveller_name = ""
 
+
 @traveller.route('/')
 def travel():
     return render_template("traveller.html")
@@ -37,6 +38,10 @@ def travel():
 def dtravel():
     form = TravellerDirect(request.form)
     traveller_repo = travellerRespository()
+    """
+    Traveller Details and Repo Creation:
+    
+    """
 
     if request.method == 'GET':
         print("In Get Call")
@@ -44,7 +49,7 @@ def dtravel():
 
     elif request.method == 'POST':
         print("In Post call")
-        traveller_dto = travellerDto(form.name.data, form.email.data, form.phone.data,form.start_time.data)
+        traveller_dto = travellerDto(form.name.data, form.email.data, form.phone.data, form.start_time.data)
         global traveller_name
         traveller_name = form.name.data
 
@@ -58,6 +63,10 @@ def dtravel():
 
 @traveller.route('/rides', methods=['POST'])
 def rides():
+    """
+    Final confirmation
+    :return:
+    """
     if request.method == 'POST':
         drivers = request.form.getlist("selected_rides")
         driver = [x.encode('UTF8') for x in drivers]
@@ -65,6 +74,5 @@ def rides():
         print(traveller_name)
         sendNotification(driver, traveller_name)
         return redirect(url_for('home.home'))
-        """How to Wait For Owner to Reply Back Then show Rider Details of Owner"""
 
     return render_template("traveller.html")
