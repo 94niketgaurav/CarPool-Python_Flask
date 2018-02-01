@@ -13,7 +13,9 @@ Consists of Notification services
 3.Confirmation To Both
 
 """
-def sendNotification(owner_mail,traveller_name):
+
+
+def sendNotification(owner_mail, traveller_name):
     param = []
     print(owner_mail)
 
@@ -21,7 +23,7 @@ def sendNotification(owner_mail,traveller_name):
         user = Users.query.filter(Users.id == rides)
         for value in user:
             param.append(value.email)
-    body= "http://127.0.0.1:5000/booking/final_booking/"+str(traveller_name)+"\n You Have A Rider"
+    body = "http://127.0.0.1:5000/booking/final_booking/" + str(traveller_name) + "\n You Have A Rider"
     datastore = {
         "data": {
             "subject": "CarPool-App",
@@ -39,7 +41,7 @@ def sendNotification(owner_mail,traveller_name):
     Json_data = json.dumps(datastore)
     headers = {'content-type': 'application/json'}
     r = requests.post(url=URL, data=Json_data, headers=headers)
-    print (r.json())
+    print(r.json())
     return
 
 
@@ -87,11 +89,12 @@ def sendverified(traveller_email):
 
 def sendRider(ridr_email):
     ridr_email = ridr_email.encode('UTF8')
+    print("In Rider")
     print(ridr_email)
 
     body = {'name': '', 'email': '', 'Phone Number': '', 'Car model': '', 'Car Number': '', 'seats': '', 'type': ''}
     user = Users.query.filter_by(email=ridr_email).first()
-
+    print(user)
     body['name'] = user.name
     body['email'] = user.email
     id = user.id
