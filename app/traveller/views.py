@@ -67,7 +67,6 @@ def rides():
     Final confirmation
     :return:
     """
-    print("hi")
     if request.method == 'POST':
         drivers = request.form.getlist("selected_rides")
         driver = [x.encode('UTF8') for x in drivers]
