@@ -1,7 +1,6 @@
 from flask_wtf import Form
-from wtforms import StringField, IntegerField, BooleanField, TextField, FieldList,DateTimeField
+from wtforms import StringField, DateTimeField
 from wtforms import validators
-from wtforms import widgets
 
 
 class TravellerDirect(Form):
@@ -22,4 +21,3 @@ class TRSignup(Form):
     sl = StringField("Starting Location", [validators.DataRequired("Please Enter Starting Loacation")])
     st = StringField("Starting Time", [validators.DataRequired("Please Enter  Starting Time")])
     dl = StringField("Drop Location", [validators.DataRequired("Please enter your drop Location")])
-

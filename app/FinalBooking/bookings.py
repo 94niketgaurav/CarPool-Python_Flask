@@ -3,7 +3,10 @@ from app.FinalBooking.forms import BookingForm
 from app.Notifications.NotifyFunctions import sendverified, sendRider
 
 final_book = Blueprint('booking', __name__, url_prefix='/booking')
-
+"""
+Owner Page Confirmation
+Redirected to Notification Api 
+"""
 
 @final_book.route('/final_booking/<variable>', methods=['GET', 'POST'])
 def final_booking(variable):
