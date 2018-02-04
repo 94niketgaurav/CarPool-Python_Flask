@@ -3,7 +3,7 @@ from wtforms import StringField, DateTimeField
 from wtforms import validators
 
 
-class TravellerDirect(Form):
+class Travellerdirect(Form):
     name = StringField("Name of the Traveller", [validators.DataRequired("Please enter your name")])
     email = StringField("Email please", [validators.DataRequired("Email Required")])
     phone = StringField("Phone Number", [validators.DataRequired("Phone Required")])

@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Sign In</h1>
+<form action="{{ url_for('owner.post_login') }}"  method="POST">
+    {{ form.hidden_tag() }}
+    <fieldset>
+        <p>{{ form.email.label }}<br>
+            {{ form.email }}
+        </p>
+
+        <p>
+            {{ form.password.label }}<br>
+            {{ form.password }}
+        </p>
+        <p>{{ form.remember_me }} Remember Me</p>
+        <p><input type="submit" value="Sign In"></p>
+    </fieldset>
+</form>
+{% endblock %}
