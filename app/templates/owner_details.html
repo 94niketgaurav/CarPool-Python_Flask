@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1 style="text-align: center">Owner Details</h1>
+
+
+    <fieldset align="centre">
+        <body>
+        {% for value in p %}
+            <br>
+            Id: {{ value.id }}<br>
+            Start Location: {{ value.start_location }}<br>
+            Start Time: {{ value.start_time }}<br>
+            Drop Location:{{ value.drop_location }}<br>
+            Car Model: {{ value.car_model }}<br>
+            Car Number: {{ value.car_number }}<br>
+            Car Type: {{ value.car_type }}<br>
+        {% endfor %}
+    </body>
+</fieldset>
+
+    {% if g.user.is_authenticated %}
+        | <a href="{{ url_for('owner.logout') }}">Logout</a>
+        {% endif %}
+
+{% endblock %}
